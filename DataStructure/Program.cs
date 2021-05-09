@@ -24,7 +24,7 @@ namespace DataStructure
             {
                 //get last node method is called to find out last node
 
-                Node lastNode = GetLastNode();
+                Node lastNode = GetLastNode(); 
                 lastNode.next = node;
             }
             Console.WriteLine("inserted into list" + node.data);
@@ -61,34 +61,34 @@ namespace DataStructure
             Console.WriteLine("inserted into front" + new_node);
         }
 
-        internal Node DeleteFirstNode()
+        internal Node DeleteFirstNode() // method to get head node which will be deleted 
         {
-            if (this.head == null)
+            if (this.head == null) // checking if head node is null then return null
             {
                 return null;
             }
-            this.head = this.head.next;
-            return this.head;
+            this.head = this.head.next; // pointer will shift to next node
+            return this.head; // returning head node
         }
 
-        public Node DeleteLastNode()
+        public Node DeleteLastNode() // method to delete last node
         {
             Node newNode = this.head;
             if (this.head == null)
             {
                 return null;
             }
-            if (this.head.next == null)
+            if (this.head.next == null) // if checking 2nd node will be null.
             {
                 this.head = null;
                 return null;
             }
-            while (newNode.next.next != null)
+            while (newNode.next.next != null) //  checking 2nd last node will be not null
             {
-                newNode = newNode.next;
+                newNode = newNode.next; // pointing new node to new.next node
             }
-            newNode.next = null;
-            return newNode;
+            newNode.next = null; // if last element is eleminated then 2nd last element should be null
+            return newNode; // rtuning new node
         }
         internal void Display()
         {
