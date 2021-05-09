@@ -8,20 +8,20 @@ namespace DataStructure
 {
     class LinkedList
     {
-        public Node head;
+        public Node head; // node is  class pointing to head // creation of head 
         public void Add(int data)
         {
-            Node node = new Node(data);
+            Node node = new Node(data); // creating obj of class Node for variable node which will insert a value in link list 
             if (this.head == null)
-                this.head = node;
+                this.head = node;// if head is equal to null then assigning value of node to head 
             else
             {
-                Node temp = head;
-                while (temp.next != null)
+                Node temp = head; // holdig head node in temp variable
+                while (temp.next != null) // checking if temp.next is not null
                 {
-                    temp = temp.next;
+                    temp = temp.next; // updating temp with next node address
                 }
-                temp.next = node;
+                temp.next = node; // inserting  new node 
             }
             Console.WriteLine("{0} inserted into the linked list", node.data);
         }
@@ -30,13 +30,13 @@ namespace DataStructure
     public class Node
     {
         public int data; //i have define two elements overthere
-        public Node next;
+        public Node next; // defining next node
 
         //constructor
-        public Node(int d)
+        public Node(int d) // it will take data from user to save in linked list
         {
             data = d;
-            next = null;
+            next = null; // this constructor will create a head node and assign node.next = null
         }
     }
     class Program
