@@ -11,9 +11,9 @@ namespace DataStructure
 
         //Creating a node head, which will be pointing to the first element in linkedlist
         public Node head;
-        public void InsertLast(int data)//creat method InserTlast 
+        public void InsertLast(int new_data)//creat method InserTlast 
         {
-            Node node = new Node(data);//Creating a object of node and adding data in node
+            Node node = new Node(new_data);//Creating a object of node and adding data in node
 
             //fills the first position in linkedlist, when head points to nothing
             if (this.head == null)
@@ -70,6 +70,26 @@ namespace DataStructure
             this.head = this.head.next;
             return this.head;
         }
+
+        public Node DeleteLastNode()
+        {
+            Node newNode = this.head;
+            if (this.head == null)
+            {
+                return null;
+            }
+            if (this.head.next == null)
+            {
+                this.head = null;
+                return null;
+            }
+            while (newNode.next.next != null)
+            {
+                newNode = newNode.next;
+            }
+            newNode.next = null;
+            return newNode;
+        }
         internal void Display()
         {
             //assigns head to 1st node.
@@ -122,10 +142,12 @@ namespace DataStructure
             list.InsertFront(30);
             list.InsertFront(56);
 
-            list.DeleteFirstNode();
+            list.DeleteLastNode();
+
             list.Display();
 
             Console.Read();
+
         }
     }
 }
