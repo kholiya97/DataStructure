@@ -8,41 +8,75 @@ namespace DataStructure
 {
     class LinkedList
     {
+
+        //Creating a node head, which will be pointing to the first element in linkedlist
         public Node head;
         public void InsertLast(int data)//creat method InserTlast 
         {
-            Node node = new Node(data);//
+            Node node = new Node(data);//Creating a object of node and adding data in node
+
+            //fills the first position in linkedlist, when head points to nothing
             if (this.head == null)
             {
                 this.head = node;
             }
             else
             {
+                //get last node method is called to find out last node
+
                 Node lastNode = GetLastNode();
                 lastNode.next = node;
             }
             Console.WriteLine("inserted into list" + node.data);
 
         }
+
+        /// finds out the last node 
         public Node GetLastNode()
         {
             Node temp = this.head;
+            //if address in the temp node is not null, loop continues
             while (temp.next != null)
             {
                 temp = temp.next;
             }
+
+            //when temp.next ==null, means last element is reached, temp is returned
             return temp;
         }
+
+        /// <summary>
+        /// Data is inserted at left side of head
+        /// </summary>
+        /// <param name="data"></param>
         public void InsertFront(int new_data)
         {
+            //object is created for adding data in node class
+
             Node new_node = new Node(new_data);
+
+            //head address is added in newly created node, hence the initial head is coming at last, and data is inserted at left
             new_node.next = this.head;
             this.head = new_node;
             Console.WriteLine("inserted into front" + new_node);
         }
+
+        internal Node DeleteFirstNode()
+        {
+            if (this.head == null)
+            {
+                return null;
+            }
+            this.head = this.head.next;
+            return this.head;
+        }
         internal void Display()
         {
+            //assigns head to 1st node.
+            //temp becomes first node of linkedlist
             Node temp = this.head;
+
+            //if temp is null, then linkedlist is null
             if (temp == null)
             {
                 Console.WriteLine("Linked list is empty");
@@ -50,6 +84,8 @@ namespace DataStructure
             }
             else
             {
+                //if temp contains data, then loop is iterated and values are printed
+
                 while (temp.next != null)
                 {
                     Console.Write(temp.data + "->");
@@ -57,34 +93,8 @@ namespace DataStructure
                 }
                 Console.WriteLine(temp.data);
             }
-        }
-        internal Node InsertAtParticularPosition(int position, int data)
-        {
-            if (position < 1)
-                Console.WriteLine("Invalid position");
-            if (position == 1)
-            {
-                var newNode = new Node(data);
-                newNode.next = this.head;
-                head = newNode;
-            }
-            else
-            {
-                while (position-- != 0)
-                {
-                    if (position == 1)
-                    {
-                        Node node = new Node(data);
-                        node.next = this.head.next;
-                        head.next = node;
-                        break;
-                    }
-                    head = head.next;
-                }
-                if (position != 1)
-                    Console.WriteLine("Position out of range");
-            }
-            return head;
+
+
         }
     }
     public class Node
@@ -106,13 +116,15 @@ namespace DataStructure
             Console.WriteLine("-------Welcome To Data Structure Program-------");
 
             LinkedList list = new LinkedList();//creating object of linkedlist class
+
+
             list.InsertFront(70);
+            list.InsertFront(30);
             list.InsertFront(56);
 
-            list.InsertAtParticularPosition(2, 30);
-
-
+            list.DeleteFirstNode();
             list.Display();
+
             Console.Read();
         }
     }
