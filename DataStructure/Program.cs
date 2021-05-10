@@ -13,19 +13,19 @@ namespace DataStructure
         public Node head;
         public void InsertLast(int new_data)//creat method InserTlast 
         {
-            Node node = new Node(new_data);//Creating a object of node and adding data in node
+            Node node = new Node(new_data);//Creating obj of class node for variable node which will insert a value of link list
 
             //fills the first position in linkedlist, when head points to nothing
-            if (this.head == null)
+            if (this.head == null) 
             {
-                this.head = node;
+                this.head = node; // if head is equal to null then assigning value of node to head
             }
             else
             {
                 //get last node method is called to find out last node
 
-                Node lastNode = GetLastNode(); 
-                lastNode.next = node;
+                Node lastNode = GetLastNode(); // updating lastnode with next node address
+                lastNode.next = node; // inserting new node
             }
             Console.WriteLine("inserted into list" + node.data);
 
@@ -120,13 +120,13 @@ namespace DataStructure
     public class Node
     {
         public int data; //i have define two elements overthere
-        public Node next;
+        public Node next; // defining next node
 
         //constructor
-        public Node(int d)
+        public Node(int d) // it will take data from user to save in linked list
         {
             data = d;
-            next = null;
+            next = null; // this constructor will create a head node and assign next.node = null
         }
     }
     class Program
